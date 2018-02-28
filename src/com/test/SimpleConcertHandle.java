@@ -2,6 +2,12 @@ package com.test;
 
 import java.util.Scanner;
 
+
+/**
+ * Display concert seat arrangement 
+ * @author Chris.Lin
+ * @version 1.0 28 Feb 2018
+ */
 public class SimpleConcertHandle {
 
     public static void main(String[] args) {
