@@ -55,6 +55,8 @@ public class OrderingDecisionHandle2 {
         int mTmpPC = 0;
         int mBests = 0;
         int mBestQ = 0;
+        int mBestR = 0;
+        int mBestS = 0;
 
         int IC = 0; // 存貨成本
         int BC = 0; // 缺貨成本
@@ -108,7 +110,6 @@ public class OrderingDecisionHandle2 {
 
         System.out.printf("\nD=%d, D_bar=%d, stdev=%d; ", mTotalDt, mAvgDt, mSDDt);
 
-        /** PART2 */
         for (int j = 0; j < s.length; j++) {
             for (int k = 0; k < Q.length; k++) {
 
@@ -164,87 +165,70 @@ public class OrderingDecisionHandle2 {
             }
         }
 
-        System.out.printf("\n\n\nBest choice:(s,Q) = (%d, %d)\n" + "Total cost: %d = %d(IC) + %d(BC) + %d(OC) + %d(PC)\n",
-                mBests, mBestQ, mTotalCost, IC, BC, OC, PC);
-        // System.out.printf("\n\n\n");
-        // System.out.printf("(s=%d,Q=%d) model:\n", s, Q);
-        // System.out.printf("t\tD\tO\tI\tL\n");
-        // System.out.printf("-----------------------------\n");
-        // for (int i = 0; i <= T; i++) {
-        // if (i > 0) {
-        // I[i] = I[i - 1] - D[i] + O[i];
-        //
-        // if (I[i] > 0) {
-        // IC += H * I[i];
-        // }
-        //
-        // BC += B * L[i];
-        // PC += C * O[i];
-        //
-        // if (I[i] < s) { // 當存貨量少或等於此值時，隨即引發一次訂購
-        // Y[i + 1] = 1;
-        // O[i + 1] = Q;
-        // }
-        // }
-        // if (i >= 0 && i < T) {
-        // OC += A * Y[i];
-        // }
-        //
-        // System.out.printf("%d\t%d\t%d\t%d\t%d\n", i, D[i], O[i], I[i], L[i]);
-        // }
-        // mTotalCost = IC + BC + OC + PC;
-        // System.out.printf("===============================\n");
-        // System.out.printf("Total cost: %d = %d(IC) + %d(BC) + %d(OC) +
-        // %d(PC)\n", mTotalCost, IC, BC, OC, PC);
-        //
-        // /** PART3 */
-        // for (int i = 0; i <= T; i++) { // 重置陣列值
-        // Y[i] = O[i] = L[i] = 0;
-        // }
-        // mTotalCost = IC = BC = OC = PC = 0; // 重置
-        // System.out.printf("\n\n\n");
-        // System.out.printf("(R=%d,S=%d) model:\n", R, S);
-        // System.out.printf("t\tD\tO\tI\tL\n");
-        // System.out.printf("-----------------------------\n");
-        // int mDivision = 0;
-        // for (int i = 0; i <= T; i++) {
-        // if (i > 0) {
-        // I[i] = I[i - 1] - D[i] + O[i];
-        // if (I[i] < 0) {
-        // L[i] = Math.abs(I[i]);
-        // I[i] = 0;
-        // }
-        //
-        // if (I[i] > 0) {
-        // IC += H * I[i];
-        // }
-        //
-        // BC += B * L[i];
-        // PC += C * O[i];
-        //
-        // if ((i + 1) == (V + R * mDivision) && I[i] < S) { // 每隔R日即進貨一次
-        // Y[i + 1] = 1;
-        // O[i + 1] = S - I[i];
-        // mDivision++;
-        // }
-        // }
-        // if (i >= 0 && i < T) {
-        // OC += A * Y[i];
-        // }
-        //
-        // System.out.printf("%d\t%d\t%d\t%d\t%d\n", i, D[i], O[i], I[i], L[i]);
-        // }
-        // mTotalCost = IC + BC + OC + PC;
-        // System.out.printf("===============================\n");
-        // System.out.printf("Total cost: %d = %d(IC) + %d(BC) + %d(OC) +
-        // %d(PC)\n", mTotalCost, IC, BC, OC, PC);
-    }
+        System.out.printf(
+                "\n\n\nBest choice:(s,Q) = (%d, %d)\n" + "Total cost: %d = %d(IC) + %d(BC) + %d(OC) + %d(PC)\n", mBests,
+                mBestQ, mTotalCost, IC, BC, OC, PC);
 
-    // public static void Decision(int aSelDec, int s , int Q,int R , int S) {
-    // if (aSelDec == 0) { // (St,Qt)
-    // System.out.printf("(s=%d,Q=%d) model:\n", s, Q);
-    // } else if (aSelDec == 1) { // (R, S)
-    //
-    // }
-    // }
+        mTotalCost = IC = BC = OC = PC = 0; // 重置
+        for (int j = 0; j < V.length; j++) {
+            for (int k = 0; k < R.length; k++) {
+                for (int i = 0; i <= T; i++) { // 重置陣列值
+                    Y[i] = O[i] = L[i] = 0;
+                }
+                mTmpTotalCost = mTmpIC = mTmpBC = mTmpOC = mTmpPC = 0; // 重置暫存值
+                System.out.printf("\n\n\n");
+                System.out.printf("(R=%d,S=%d) model:\n", R[k], S[k]);
+                System.out.printf("t\tD\tO\tI\tL\n");
+                System.out.printf("-----------------------------\n");
+                int mDivision = 0;
+                for (int i = 0; i <= T; i++) {
+                    if (i > 0) {
+                        I[i] = I[i - 1] - D[i] + O[i];
+                        if (I[i] < 0) {
+                            L[i] = Math.abs(I[i]);
+                            I[i] = 0;
+                        }
+
+                        if (I[i] > 0) {
+                            mTmpIC += H * I[i];
+                        }
+
+                        mTmpBC += B * L[i];
+                        mTmpPC += C * O[i];
+
+                        if ((i < T) && ((i + 1) == (V[j] + R[k] * mDivision)) && I[i] < S[k]) { // 每隔R日即進貨一次
+                            Y[i + 1] = 1;
+                            O[i + 1] = S[k] - I[i];
+                            mDivision++;
+                        }
+                    }
+                    if (i >= 0 && i < T) {
+                        mTmpOC += A * Y[i];
+                    }
+
+                    System.out.printf("%d\t%d\t%d\t%d\t%d\n", i, D[i], O[i], I[i], L[i]);
+                }
+                mTmpTotalCost = mTmpIC + mTmpBC + mTmpOC + mTmpPC;
+                System.out.printf("===============================\n");
+                System.out.printf("Total cost: %d = %d(IC) + %d(BC) + %d(OC) + %d(PC)\n", mTmpTotalCost, mTmpIC, mTmpBC,
+                        mTmpOC, mTmpPC);
+
+                if (mTmpTotalCost < mTotalCost || mTotalCost == 0) { // 找出最小cost
+                                                                     // 或是 第一次存
+                    mTotalCost = mTmpTotalCost;
+                    IC = mTmpIC;
+                    BC = mTmpBC;
+                    OC = mTmpOC;
+                    PC = mTmpPC;
+                    mBestR = R[k];
+                    mBestS = S[k];
+                }
+            }
+        }
+        
+        System.out.printf(
+                "\n\n\nBest choice:(R,S) = (%d, %d)\n" + "Total cost: %d = %d(IC) + %d(BC) + %d(OC) + %d(PC)\n", mBestR,
+                mBestS, mTotalCost, IC, BC, OC, PC);
+
+    }
 }
