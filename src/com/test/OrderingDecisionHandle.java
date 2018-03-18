@@ -94,8 +94,10 @@ public class OrderingDecisionHandle {
         for (int i = 0; i <= T; i++) {
             if (i > 0) {
                 I[i] = I[i - 1] - D[i] + O[i];
-
-                if (I[i] > 0) {
+                if (I[i] < 0) {
+                    L[i] = Math.abs(I[i]);
+                    I[i] = 0;
+                } else {
                     IC += H * I[i];
                 }
 
@@ -133,9 +135,7 @@ public class OrderingDecisionHandle {
                 if (I[i] < 0) {
                     L[i] = Math.abs(I[i]);
                     I[i] = 0;
-                }
-
-                if (I[i] > 0) {
+                } else {
                     IC += H * I[i];
                 }
 
