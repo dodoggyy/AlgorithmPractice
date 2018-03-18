@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Display Ordering Decision
  * 
  * @author Chris.Lin
- * @version 1.0 18 Mar 2018
+ * @version 1.1 18 Mar 2018
  */
 public class OrderingDecisionHandle {
 
@@ -73,11 +73,11 @@ public class OrderingDecisionHandle {
             System.out.printf("%d ", D[i]);
             mTotalDt += D[i];
         }
-        mAvgDt = mTotalDt / T;
+        mAvgDt = mTotalDt / T; // 平均值
         for (int i = 1; i <= T; i++) {
             mTmp += Math.pow((D[i] - mAvgDt), 2);
         }
-        mSDDt = (int) Math.sqrt(mTmp / (T - 1));
+        mSDDt = (int) Math.sqrt(mTmp / (T - 1)); // 標準差
         s = mAvgDt + mSDDt;
         Q = (int) Math.floor(Math.sqrt(2 * A * mTotalDt / H));
         S = 7 * mAvgDt;
@@ -95,10 +95,10 @@ public class OrderingDecisionHandle {
             if (i > 0) {
                 I[i] = I[i - 1] - D[i] + O[i];
 
-                if(I[i] > 0) {
+                if (I[i] > 0) {
                     IC += H * I[i];
                 }
-                
+
                 BC += B * L[i];
                 PC += C * O[i];
 
@@ -130,18 +130,19 @@ public class OrderingDecisionHandle {
         for (int i = 0; i <= T; i++) {
             if (i > 0) {
                 I[i] = I[i - 1] - D[i] + O[i];
-                if(I[i] < 0) {
+                if (I[i] < 0) {
                     L[i] = Math.abs(I[i]);
+                    I[i] = 0;
                 }
 
-                if(I[i] > 0) {
+                if (I[i] > 0) {
                     IC += H * I[i];
                 }
 
                 BC += B * L[i];
                 PC += C * O[i];
 
-                if ((i+1) == (V + R*mDivision) && I[i] < S) { // 每隔R日即進貨一次
+                if ((i + 1) == (V + R * mDivision) && I[i] < S) { // 每隔R日即進貨一次
                     Y[i + 1] = 1;
                     O[i + 1] = S - I[i];
                     mDivision++;
@@ -157,5 +158,4 @@ public class OrderingDecisionHandle {
         System.out.printf("===============================\n");
         System.out.printf("Total cost: %d = %d(IC) + %d(BC) + %d(OC) + %d(PC)\n", mTotalCost, IC, BC, OC, PC);
     }
-
 }
