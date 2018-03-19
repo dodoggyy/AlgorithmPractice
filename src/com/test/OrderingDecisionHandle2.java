@@ -99,7 +99,7 @@ public class OrderingDecisionHandle2 {
         mTmpQ = (int) Math.floor(Math.sqrt(2 * A * mTotalDt / H));
         Q[0] = mTmpQ - 50; // 設Q[0]為Q -50
         for (int i = 1; i < Q.length; i++) { // 設定Qt可能的值 Q-50, Q-40,...,Q+50
-            Q[i] = Q[0] - 50 + 10 * i;
+            Q[i] = Q[0] + (10 * i);
         }
 
         for (int i = 0; i < R.length; i++) { // 設定(R,S)值
