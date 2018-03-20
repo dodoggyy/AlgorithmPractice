@@ -109,7 +109,7 @@ public class OrderingDecisionHandle {
                     O[i + 1] = Q;
                 }
             }
-            if (i >= 0 && i < T) {
+            if (i >= 0 && i <= T) {
                 OC += A * Y[i];
             }
 
@@ -148,7 +148,7 @@ public class OrderingDecisionHandle {
                     mDivision++;
                 }
             }
-            if (i >= 0 && i < T) {
+            if (i >= 0 && i <= T) {
                 OC += A * Y[i];
             }
 
