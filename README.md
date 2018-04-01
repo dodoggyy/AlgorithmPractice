@@ -1,11 +1,32 @@
 # AlgorithmPractice
 
-Basic sorting algorithm implementation 
-1.bubble sort (flag check & non-flag check)
-2.insertion sort (out-of-place & in-place)
-3.selection sort (out-of-place & in-place)
-4.linear search
-5.binary search (recursive & non-recursive)
+#### Goal:
+基礎演算法
+LeetCode Practice
 
-Advanced sorting algorithm implementation
-1.quick sort
+#### 完成項目:
+
+* **Sorting :**
+    * [Insertion Sort]
+    * [Bubble Sort]
+    * [Selection Sort]
+    * [Quicksort]
+    * [Merge Sort]
+    
+    
+* **Search :**
+    * [Linear Search]
+    * [Binary Search]
+
+* **LeetCode :**
+
+
+[Insertion Sort]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/algo/InsertionSort.java
+[Bubble Sort]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/algo/BubbleSort.java
+[Selection Sort]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/algo/SelectionSort.java
+[Quicksort]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/algo/QuickSort.java
+[Merge Sort]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/algo/MergeSort.java
+[Linear Search]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/algo/LinearSearch.java
+[Binary Search]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/algo/BinarySearch.java
+
+
