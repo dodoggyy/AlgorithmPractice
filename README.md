@@ -19,8 +19,10 @@ LeetCode Practice
     * [Binary Search]
 
 * **LeetCode :**
+    * [1. Two Sum]
+    * [7. Reverse Integer]
+    * [9. Palindrome Number]
     * [14. Longest Common Prefix]
-    * [27. Remove ElementBinary Search]
     * [28. Implement strStr()]
     * [29. Divide Two Integers]
 
@@ -32,8 +34,10 @@ LeetCode Practice
 [Merge Sort]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/algo/MergeSort.java
 [Linear Search]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/algo/LinearSearch.java
 [Binary Search]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/algo/BinarySearch.java
+[1. Two Sum]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/practice/TwoSum.java
+[7. Reverse Integer]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/practice/ReverseInteger.java
+[9. Palindrome Number]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/practice/Palindrome.java
 [14. Longest Common Prefix]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/practice/LongestCommonPrefix.java
-[27. Remove ElementBinary Search]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/practice/RemoveElement.java
 [28. Implement strStr()]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/practice/StrStr.java
 [29. Divide Two Integers]:https://github.com/dodoggyy/AlgorithmPractice/blob/master/src/com/practice/DivideTwoIntegers.java
 
